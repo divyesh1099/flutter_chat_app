@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/services/auth.dart';
+import 'package:flutter_chat_app/views/chatRoomsScreen.dart';
 import 'package:flutter_chat_app/widgets/widget.dart';
 
 class SignUp extends StatefulWidget {
@@ -29,7 +30,8 @@ class _SignUpState extends State<SignUp> {
           .signUpWithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((value) {
-        print("${value.uid}");
+        print("${value}");
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
     }
   }
