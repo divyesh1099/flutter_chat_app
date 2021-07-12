@@ -4,7 +4,9 @@ import 'package:flutter_chat_app/views/chatRoomsScreen.dart';
 import 'package:flutter_chat_app/widgets/widget.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+  final Function toggle;
+  SignUp(this.toggle);
+  // const SignUp({Key? key}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -30,7 +32,6 @@ class _SignUpState extends State<SignUp> {
           .signUpWithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((value) {
-        print("${value}");
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
     }
@@ -154,12 +155,20 @@ class _SignUpState extends State<SignUp> {
                             "Already have an account? ",
                             style: mediumTextStyle(),
                           ),
-                          Text(
-                            "Sign in instead",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                decoration: TextDecoration.underline),
+                          GestureDetector(
+                            onTap: (){
+                              widget.toggle();
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 8),
+                              child: Text(
+                                "Sign in instead",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    decoration: TextDecoration.underline),
+                              ),
+                            ),
                           )
                         ],
                       ),
