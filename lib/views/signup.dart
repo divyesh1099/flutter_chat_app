@@ -5,7 +5,9 @@ import 'package:flutter_chat_app/widgets/widget.dart';
 
 class SignUp extends StatefulWidget {
   final Function toggle;
+
   SignUp(this.toggle);
+
   // const SignUp({Key? key}) : super(key: key);
 
   @override
@@ -32,7 +34,8 @@ class _SignUpState extends State<SignUp> {
           .signUpWithEmailAndPassword(emailTextEditingController.text,
               passwordTextEditingController.text)
           .then((value) {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatRoom()));
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => ChatRoom()));
       });
     }
   }
@@ -156,7 +159,7 @@ class _SignUpState extends State<SignUp> {
                             style: mediumTextStyle(),
                           ),
                           GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               widget.toggle();
                             },
                             child: Container(
